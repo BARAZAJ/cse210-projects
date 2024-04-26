@@ -7,3 +7,18 @@ class Program
         Console.WriteLine("Hello Sandbox World!");
     }
 }
+
+int x=4
+Console.WriteLine(x)
+
+
+
+
+
+
+
+
+
+
+
+
