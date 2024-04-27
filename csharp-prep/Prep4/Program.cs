@@ -1,6 +1,6 @@
 using System;
 using System.Net;
-using System.Collection.Generic;
+using System.Collections.Generic;
 
 class Program
 {
@@ -8,16 +8,20 @@ class Program
     {
         Console.WriteLine("Hello Prep4 World!");
 
-        List<int> numberslist = new List<int>();
+        List<float> numberslist = new List<float>();
 
-        int number = -1;
+        float number = -1;
+        
 
         while (number != 0)
+       {
+        Console.Write("Enter a number or enter 0 to quit");
 
-        {
-            Console.Write("Enter a number or enter 0 to quit");
-            string response = Console.ReadLine();
-            number = float.Parse(response);
+        string response = Console.ReadLine();
+        number = float.Parse(response);
+
+        
+            
             
             if (number!= 0)
             { numberslist.Add(number);
@@ -25,63 +29,85 @@ class Program
             }
 
         }
-        int sum =0;
-        foreach (float number in numberslist)
-        { sum += number;
+        float sum =0;
+        foreach (float item in numberslist)
+        { sum += item;
             
         }
-        console.WriteLine($"The sum is {sum}");
+        Console.WriteLine($"The sum is {sum}");
 
-        float average = ((float)sum)/number.Count;
-        console.WriteLine($"The average is {average}");
+        float average = ((float)sum)/numberslist.Count;
+        Console.WriteLine($"The average is {average}");
 
-        float maximum = numberslist[0];
+        float max = numberslist[0];
 
-        foreach (float number in numberslist)
-        {  if (number > maximum)
-        {maximum = number;}   
+        foreach (float item in numberslist)
+        {  if (item > max)
+        {max = item;}   
         }
-        Console.WriteLine($"The maximum number is {maximu}");
+        Console.WriteLine($"The maximum number is {max}");
 
+        float mini = float.MaxValue;
 
+        foreach (float item in numberslist)
+        {
+            if (item >0  && item <mini)
+           {mini = item;}
+        }
 
+        if (mini  != float.MaxValue)
+            
+        {Console.WriteLine($"The smallest positive number is {mini}.");}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            else
+            {
+                Console.WriteLine("No positive Number was found in the List");
+            }
     }
 }
+            
+    
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
