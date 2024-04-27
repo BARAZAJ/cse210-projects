@@ -63,6 +63,12 @@ class Program
             {
                 Console.WriteLine("No positive Number was found in the List");
             }
+        Console.WriteLine("Your List is: ");
+        foreach (float item in numberslist)
+        {
+            
+           Console.WriteLine(item); 
+        }
     }
 }
             
