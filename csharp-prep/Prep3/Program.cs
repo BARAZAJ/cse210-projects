@@ -22,7 +22,7 @@ class Program
         if (MagicNumber > guessnumber)
         {Console.WriteLine("Guess a higher number");}
 
-        else if (MagicNumber> guessnumber)
+        else if (MagicNumber < guessnumber)
         {Console.WriteLine("Guess a lower number.");}
 
         else 
