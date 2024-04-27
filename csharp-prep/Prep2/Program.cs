@@ -31,7 +31,7 @@ else
 {
     Letter = "F";
 }
-Console.WriteLine($"Your grade is: {Grade}");
+Console.WriteLine($"Your grade is: {Letter}");
 
 if (Grade >= 70)
 {
