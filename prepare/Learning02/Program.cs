@@ -1,9 +1,38 @@
 using System;
 
-class Program
+
+    
+public class Job
 {
-    static void Main(string[] args)
+    // Properties
+    public string JobTitle { get; set; }
+    public string Company { get; set; }
+    public int StartYear { get; set; }
+    public int EndYear { get; set; }
+
+    // Constructor
+    public Job(string jobTitle, string company, int startYear, int endYear)
     {
-        Console.WriteLine("Hello Learning02 World!");
+        JobTitle = jobTitle;
+        Company = company;
+        StartYear = startYear;
+        EndYear = endYear;
     }
+
+    // Method to display job information
+    public void DisplayJobInfo()
+    {
+        Console.WriteLine($"{JobTitle} ({Company}) {StartYear}-{EndYear}");
+    }
+}
+
+    
+
+
+
+    
+
+
+
+    
 }
