@@ -1,38 +1,34 @@
 using System;
 
-
-    
-public class Job
+class Program
 {
-    // Properties
-    public string JobTitle { get; set; }
-    public string Company { get; set; }
-    public int StartYear { get; set; }
-    public int EndYear { get; set; }
-
-    // Constructor
-    public Job(string jobTitle, string company, int startYear, int endYear)
+    static void Main(string[] args)
     {
-        JobTitle = jobTitle;
-        Company = company;
-        StartYear = startYear;
-        EndYear = endYear;
-    }
+        Job job1 = new Job();
+        job1._jobTitle = "Software Engineer";
+        job1._company = "Microsoft";
+        job1._startYear = 2019;
+        job1._endYear = 2022;
 
-    // Method to display job information
-    public void DisplayJobInfo()
-    {
-        Console.WriteLine($"{JobTitle} ({Company}) {StartYear}-{EndYear}");
+        Job job2 = new Job();
+        job2._jobTitle = "Manager";
+        job2._company = "Apple";
+        job2._startYear = 2022;
+        job2._endYear = 2023;
+
+        Resume myResume = new Resume();
+        myResume._name = "Allison Rose";
+
+        myResume._jobs.Add(job1);
+        myResume._jobs.Add(job2);
+
+        myResume.Display();
     }
 }
 
-    
 
 
 
-    
 
 
 
-    
-}
