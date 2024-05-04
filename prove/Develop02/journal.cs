@@ -30,12 +30,11 @@ public class Journal
     {
         try
         {
-            using (StreamWriter writer = new StreamWriter(fileName))
+            using (StreamWriter writer = new StreamWriter(fileName, false, Encoding.UTF8))
             {
                 foreach (var entry in entries)
                 {
-                    string line = $"{QuoteIfNeeded(entry.Prompt)}, {QuoteIfNeeded(entry.Response)}, {entry.Date:yyyy-MM-dd HH:mm:ss}";
-                    writer.WriteLine(line);
+                    writer.WriteLine($"{QuoteField(entry.Prompt)}, {QuoteField(entry.Response)}, {entry.Date:yyyy-MM-dd HH:mm:ss}");
                 }
             }
             Console.WriteLine("Entries saved to CSV successfully.");
@@ -52,16 +51,16 @@ public class Journal
         {
             List<Entry> loadedEntries = new List<Entry>();
 
-            using (StreamReader reader = new StreamReader(fileName))
+            using (StreamReader reader = new StreamReader(fileName, Encoding.UTF8))
             {
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    string[] parts = line.Split(',');
-                    if (parts.Length == 3)
+                    string[] parts = SplitCsvLine(line);
+                    if (parts.Length >= 3)
                     {
-                        string prompt = UnquoteIfNeeded(parts[0].Trim());
-                        string response = UnquoteIfNeeded(parts[1].Trim());
+                        string prompt = UnquoteField(parts[0].Trim());
+                        string response = UnquoteField(parts[1].Trim());
                         DateTime date = DateTime.ParseExact(parts[2].Trim(), "yyyy-MM-dd HH:mm:ss", null);
                         loadedEntries.Add(new Entry(prompt, response, date));
                     }
@@ -77,22 +76,49 @@ public class Journal
         }
     }
 
-    private string QuoteIfNeeded(string value)
+    private string QuoteField(string value)
     {
-        if (value.Contains(",") || value.Contains("\""))
+        if (value.Contains(",") || value.Contains("\"") || value.Contains("\n"))
         {
             return $"\"{value.Replace("\"", "\"\"")}\"";
         }
         return value;
     }
 
-    private string UnquoteIfNeeded(string value)
+    private string UnquoteField(string value)
     {
         if (value.StartsWith("\"") && value.EndsWith("\""))
         {
-            
+           
             return value.Substring(1, value.Length - 2).Replace("\"\"", "\"");
         }
         return value;
+    }
+
+    private string[] SplitCsvLine(string line)
+    {
+        List<string> fields = new List<string>();
+        StringBuilder currentField = new StringBuilder();
+        bool inQuotes = false;
+
+        foreach (char c in line)
+        {
+            if (c == '"')
+            {
+                inQuotes = !inQuotes;
+            }
+            else if (c == ',' && !inQuotes)
+            {
+                fields.Add(currentField.ToString());
+                currentField.Clear();
+            }
+            else
+            {
+                currentField.Append(c);
+            }
+        }
+
+        fields.Add(currentField.ToString()); 
+        return fields.ToArray();
     }
 }
