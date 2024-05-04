@@ -1,101 +1,97 @@
-using System;
-using System.Collections.Generic;
-class Program
+internal class Program
 {
+    private static Journal entryManager = new Journal();
+    private static string[] randomPrompts = {
+        "Who was the most interesting person I interacted with today?",
+        "What was the best part of my day?",
+        "How did I see the hand of the Lord in my life today?",
+        "What was the strongest emotion I felt today?",
+        "If I had one thing I could do over today, what would it be?",
+        "What made me smile today?",
+        "How did I challenge myself today?",
+        "What am I grateful for right now?",
+        "What is one thing I learned today?",
+        "How did I show kindness to someone today?"
+       
+    };
+    private static Random random = new Random();
+    private static int promptIndex;
+
     static void Main(string[] args)
     {
-        Console.WriteLine("Please select from one of the choices below!");
-        Console.WriteLine("1. Write");
-        Console.WriteLine("2. Display");
-        Console.WriteLine("3. Load");
-        Console.WriteLine("4. Save");
-        Console.WriteLine("5. Quit");
+        bool continueRunning = true;
 
-        Console.Write("What would you like to do? ");
-
-        // Reading user input as a string
-        string userInput = Console.ReadLine();
-
-        // Attempting to parse the user input to an integer
-        if (int.TryParse(userInput, out int userChoice))
+        while (continueRunning)
         {
-            // Switch statement to handle different user choices
-            switch (userChoice)
+            Console.Clear();
+            DisplayMenu();
+            Console.Write("What would you like to do? ");
+            if (int.TryParse(Console.ReadLine(), out int userChoice))
             {
-                case 1:
-                    Console.WriteLine("You chose: Write");
-                    List<string> questions = new List<string>()
-                    {
-                        "Who was the most interesting person you spoke to today?",
-                        "What was the best part of my day?",
-                        "How did I see the hand of the Lord in my life today?",
-                        "What was the strongest emotion I felt today?",
-                        "If I have one thing I could ever do today, what would it be?"
-                    };
-                       Random random = new Random();
+                switch (userChoice)
+                {
+                    case 1:
+                        Console.WriteLine("Writing a new entry...");
+                        DisplayRandomPrompt();
+                        Console.Write("Enter your response: ");
+                        string response = Console.ReadLine();
+                        entryManager.AddEntry(randomPrompts[promptIndex], response);
+                        break;
 
-                       int randomindex = random.Next(questions.Count);
-                       string randomquestion = questions[randomindex];
-                        Console.Write($"{randomquestion}");
-                        string UserInput = Console.ReadLine();
+                    case 2:
+                        Console.WriteLine("Displaying all entries...");
+                        entryManager.DisplayEntries();
+                        break;
 
-                        DateTime currenttime = DateTime.Now;
-                        string DateToday = currenttime.ToShortDateString();
+                    case 3:
+                        Console.WriteLine("Saving entries to a CSV file...");
+                        Console.Write("Enter a filename to save: ");
+                        string saveFileName = Console.ReadLine();
+                        entryManager.SaveEntriesToCsv(saveFileName);
+                        break;
 
-                       entry entrydata = new entry();
-                       entrydata.prompttext = randomquestion;
-                       entrydata.date = DateToday;
-                       entrydata.userentry = UserInput;
+                    case 4:
+                        Console.WriteLine("Loading entries from a CSV file...");
+                        Console.Write("Enter a filename to load: ");
+                        string loadFileName = Console.ReadLine();
+                        entryManager.LoadEntriesFromCsv(loadFileName);
+                        Console.WriteLine("Entries loaded:");
+                        entryManager.DisplayEntries(); 
+                        break;
 
+                    case 5:
+                        Console.WriteLine("Exiting the program. Goodbye!");
+                        continueRunning = false;
+                        break;
 
-
-
-
-
-
-
-
-                    // Add code here to handle "Write" action
-                    
-
-
-
-
-
-                    break;
-                case 2:
-                    Console.WriteLine("You chose: Display");
-                    // Add code here to handle "Display" action
-                    break;
-                case 3:
-                    Console.WriteLine("You chose: Load");
-                    // Add code here to handle "Load" action
-                    break;
-                case 4:
-                    Console.WriteLine("You chose: Save");
-                    // Add code here to handle "Save" action
-                    break;
-                case 5:
-                    Console.WriteLine("You chose: Quit");
-                    // Add code here to handle "Quit" action
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice. Please select a number between 1 and 5.");
-                    break;
+                    default:
+                        Console.WriteLine("Invalid choice. Please select a number between 1 and 5.");
+                        break;
+                }
             }
-        }
-        else
-        {
-            Console.WriteLine("Invalid input. Please enter a valid number.");
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number.");
+            }
+
+            Console.WriteLine("\nPress Enter to continue...");
+            Console.ReadLine();
         }
     }
+
+    private static void DisplayMenu()
+    {
+        Console.WriteLine("Please select from one of the choices below:");
+        Console.WriteLine("1. Write a new entry");
+        Console.WriteLine("2. Display all entries");
+        Console.WriteLine("3. Save entries to a CSV file");
+        Console.WriteLine("4. Load entries from a CSV file");
+        Console.WriteLine("5. Quit");
+    }
+
+    private static void DisplayRandomPrompt()
+    {
+        promptIndex = random.Next(randomPrompts.Length);
+        Console.WriteLine($"Prompt: {randomPrompts[promptIndex]}");
+    }
 }
-
-
-
-
-
-
-
-
-
