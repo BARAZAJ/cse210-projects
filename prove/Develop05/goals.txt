@@ -1,1 +1,3 @@
-jumping - I will be chilling: 30 points
+jog - will jog daily: 20 points
+drive - I will always drive: 20 points
+chill - I will chill more: 50 points (Progress: 3/3)
