@@ -25,6 +25,7 @@ public class Program
                 BreathingActivity breathingActivity = new BreathingActivity(durationBreathing);
                 breathingActivity.Run();
                 break;
+                
             case 2:
                 Console.WriteLine("Welcome to the Reflection activity");
                 Console.WriteLine("This activity will help you reflect on time in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
@@ -33,6 +34,7 @@ public class Program
                 ReflectingActivity reflectingActivity = new ReflectingActivity(durationReflection);
                 reflectingActivity.Run();
                 break;
+                
             case 3:
                 Console.WriteLine("Welcome to the listing activity!");
                 Console.WriteLine("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
@@ -41,6 +43,7 @@ public class Program
                 ListingActivity listingActivity = new ListingActivity(durationListing);
                 listingActivity.Run();
                 break;
+                
             case 4:
                 
                 break;
