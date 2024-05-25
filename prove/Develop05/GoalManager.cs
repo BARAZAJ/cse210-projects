@@ -13,11 +13,11 @@ public class GoalManager
     {
         while (true)
         {
-            Console.WriteLine("\n--- Goal Manager ---");
-            Console.WriteLine("1. Display Player Info");
-            Console.WriteLine("2. List Goal Names");
-            Console.WriteLine("3. List Goal Details");
-            Console.WriteLine("4. Create Goal");
+            Console.WriteLine("\n--- Menu options ---");
+            Console.WriteLine("1. Check your score");
+            Console.WriteLine("2. Check goal names");
+            Console.WriteLine("3. Check details of your goal");
+            Console.WriteLine("4. Create new Goal");
             Console.WriteLine("5. Record Event");
             Console.WriteLine("6. Save Goals");
             Console.WriteLine("7. Load Goals");
@@ -88,10 +88,10 @@ public class GoalManager
         Console.Write("Choose a goal type: ");
         var type = Console.ReadLine();
 
-        Console.Write("Enter goal name: ");
+        Console.Write("Enter your goal name: ");
         var name = Console.ReadLine();
 
-        Console.Write("Enter goal description: ");
+        Console.Write("Describe your goal: ");
         var description = Console.ReadLine();
 
         Console.Write("Enter points: ");
