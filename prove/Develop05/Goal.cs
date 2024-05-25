@@ -18,3 +18,31 @@ public abstract class Goal
     public abstract string GetDetailsString();
     public abstract string GetStringRepresentation();
 }
+
+public class NegativeGoal : Goal
+{
+    public NegativeGoal(string name, string description, int points)
+        : base(name, description, -points)
+    {
+    }
+
+    public override void RecordEvent()
+    {
+        
+    }
+
+    public override bool IsComplete()
+    {
+        return true; 
+    }
+
+    public override string GetDetailsString()
+    {
+        return $"{_shortName}: {_description} (Negative Points: {_points})";
+    }
+
+    public override string GetStringRepresentation()
+    {
+        return $"{_shortName} - {_description}: Negative {_points} points";
+    }
+}

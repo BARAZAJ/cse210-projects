@@ -2,7 +2,8 @@ public class SimpleGoal : Goal
 {
     private bool _isComplete;
 
-    public SimpleGoal(string name, string description, int points) : base(name, description, points)
+    public SimpleGoal(string name, string description, int points)
+        : base(name, description, points)
     {
         _isComplete = false;
     }
@@ -19,7 +20,7 @@ public class SimpleGoal : Goal
 
     public override string GetDetailsString()
     {
-        return $"{_shortName}: {_description} (Points: {_points}, Complete: {_isComplete})";
+        return $"{_shortName}: {_description} (Points: {_points})";
     }
 
     public override string GetStringRepresentation()
@@ -27,3 +28,4 @@ public class SimpleGoal : Goal
         return $"{_shortName} - {_description}: {_points} points";
     }
 }
+

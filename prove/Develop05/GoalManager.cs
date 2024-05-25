@@ -80,8 +80,13 @@ public class GoalManager
 
     public void CreateGoal()
     {
-        Console.Write("Enter goal type (simple, eternal, checklist): ");
-        var type = Console.ReadLine().ToLower();
+        Console.WriteLine("Enter goal type:");
+        Console.WriteLine("1 - Simple Goal");
+        Console.WriteLine("2 - Eternal Goal");
+        Console.WriteLine("3 - Checklist Goal");
+        Console.WriteLine("4 - Negative Goal");
+        Console.Write("Choose a goal type: ");
+        var type = Console.ReadLine();
 
         Console.Write("Enter goal name: ");
         var name = Console.ReadLine();
@@ -94,13 +99,13 @@ public class GoalManager
 
         switch (type)
         {
-            case "simple":
+            case "1":
                 _goals.Add(new SimpleGoal(name, description, points));
                 break;
-            case "eternal":
+            case "2":
                 _goals.Add(new EternalGoal(name, description, points));
                 break;
-            case "checklist":
+            case "3":
                 Console.Write("Enter target amount: ");
                 var target = int.Parse(Console.ReadLine());
 
@@ -108,6 +113,9 @@ public class GoalManager
                 var bonus = int.Parse(Console.ReadLine());
 
                 _goals.Add(new ChecklistGoal(name, description, points, target, bonus));
+                break;
+            case "4":
+                _goals.Add(new NegativeGoal(name, description, points));
                 break;
             default:
                 Console.WriteLine("Invalid goal type.");
@@ -138,8 +146,12 @@ public class GoalManager
 
     public void SaveGoals()
     {
-        using (var writer = new StreamWriter("goals.txt"))
+        Console.Write("Enter the filename to save goals: ");
+        var filename = Console.ReadLine();
+
+        using (var writer = new StreamWriter(filename))
         {
+            writer.WriteLine(_score);
             foreach (var goal in _goals)
             {
                 writer.WriteLine(goal.GetStringRepresentation());
@@ -150,24 +162,26 @@ public class GoalManager
 
     public void LoadGoals()
     {
-        if (File.Exists("goals.txt"))
+        Console.Write("Enter the filename to load goals: ");
+        var filename = Console.ReadLine();
+
+        if (File.Exists(filename))
         {
             _goals.Clear();
-            using (var reader = new StreamReader("goals.txt"))
+            using (var reader = new StreamReader(filename))
             {
+                _score = int.Parse(reader.ReadLine()); // Load the score
+
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    // Simplified loading logic
                     var parts = line.Split(new[] { '-' }, 2);
                     var name = parts[0].Trim();
                     var descriptionPoints = parts[1].Split(':')[0].Trim();
                     var points = int.Parse(descriptionPoints.Split()[0]);
 
-                    // Assuming the description is a single word for simplicity
-                    var description = descriptionPoints.Substring(descriptionPoints.IndexOf(' ') + 1);
-
                     // Simplified for demo purposes
+                    var description = descriptionPoints.Substring(descriptionPoints.IndexOf(' ') + 1);
                     _goals.Add(new SimpleGoal(name, description, points));
                 }
             }
@@ -179,3 +193,30 @@ public class GoalManager
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
