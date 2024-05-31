@@ -5,10 +5,10 @@ public class Program
 {
     public static void Main()
     {
-        // Create a list to store videos
+        
         List<Video> videos = new List<Video>();
 
-        // Create some video objects and add comments to them
+        
         Video video1 = new Video("Cooking like a pro", "Isaac the cook", 300);
         video1.AddComment(new Comment("Baraza", "Great video!"));
         video1.AddComment(new Comment("John", "This sucks, Go to hell!"));
