@@ -4,12 +4,12 @@ public class EternalGoal : Goal
 
     public override void RecordEvent()
     {
-        // Eternal goals are never marked complete, but we can log progress or points
+        
     }
 
     public override bool IsComplete()
     {
-        return false; // Eternal goals are never truly complete
+        return false; 
     }
 
     public override string GetDetailsString()
