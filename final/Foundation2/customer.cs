@@ -1,4 +1,4 @@
-namespace EventPlanning
+namespace OnlineOrderingSystem
 {
     public class Customer
     {
@@ -11,9 +11,19 @@ namespace EventPlanning
             _address = address;
         }
 
-        public string GetCustomerDetails()
+        public bool IsInUSA()
         {
-            return $"Name: {_name}\nAddress: {_address.GetFullAddress()}";
+            return _address.IsInUSA();
+        }
+
+        public string GetName()
+        {
+            return _name;
+        }
+
+        public string GetAddress()
+        {
+            return _address.GetFullAddress();
         }
     }
 }

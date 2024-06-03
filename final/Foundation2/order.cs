@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using System.Text;
 
-namespace EventPlanning
+namespace OnlineOrderingSystem
 {
     public class Order
     {
@@ -9,8 +10,8 @@ namespace EventPlanning
 
         public Order(Customer customer)
         {
-            _customer = customer;
             _products = new List<Product>();
+            _customer = customer;
         }
 
         public void AddProduct(Product product)
@@ -23,24 +24,29 @@ namespace EventPlanning
             double totalCost = 0;
             foreach (var product in _products)
             {
-                totalCost += product.GetTotalPrice();
+                totalCost += product.GetTotalCost();
             }
+
+            totalCost += _customer.IsInUSA() ? 5 : 35;
             return totalCost;
         }
 
         public string GetPackingLabel()
         {
-            string label = "Packing Label:\n";
+            StringBuilder sb = new StringBuilder();
             foreach (var product in _products)
             {
-                label += $"{product.GetProductDetails()}\n";
+                sb.AppendLine($"{product.GetName()} ({product.GetProductId()})");
             }
-            return label;
+            return sb.ToString();
         }
 
         public string GetShippingLabel()
         {
-            return $"Shipping Label:\n{_customer.GetCustomerDetails()}";
+            return $"{_customer.GetName()}\n{_customer.GetAddress()}";
         }
     }
 }
+
+
+
