@@ -1,9 +1,23 @@
 using System;
+using System.Collections.Generic;
+using YourProject.Activities; // Ensure this matches your actual project namespace
 
-class Program
+namespace YourProject
 {
-    static void Main(string[] args)
+    public class Program
     {
-        Console.WriteLine("Hello Foundation4 World!");
+        public static void Main()
+        {
+            List<Activity> activities = new List<Activity>
+            {
+                new Cycling(new DateTime(2022, 11, 3), 30, 20),
+                new Swimming(new DateTime(2022, 11, 3), 30, 40)
+            };
+
+            foreach (var activity in activities)
+            {
+                Console.WriteLine(activity.GetSummary());
+            }
+        }
     }
 }
