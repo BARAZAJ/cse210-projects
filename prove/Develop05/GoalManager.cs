@@ -68,16 +68,16 @@ public class GoalManager
 
     public void CreateGoal()
     {
-        Console.WriteLine("Enter goal type (1: Simple, 2: Eternal, 3: Checklist, 4: Negative): ");
+        Console.WriteLine("Enter your goal type (1: Simple, 2: Eternal, 3: Checklist, 4: Negative): ");
         string type = Console.ReadLine();
 
-        Console.WriteLine("Enter goal name: ");
+        Console.WriteLine("What is the name of your goal: ");
         string name = Console.ReadLine();
 
-        Console.WriteLine("Enter goal description: ");
+        Console.WriteLine("Describe your goal: ");
         string description = Console.ReadLine();
 
-        Console.WriteLine("Enter goal points: ");
+        Console.WriteLine("Enter the goal's number of points: ");
         int points = int.Parse(Console.ReadLine());
 
         switch (type)
@@ -89,7 +89,7 @@ public class GoalManager
                 _goals.Add(new EternalGoal(name, description, points));
                 break;
             case "3":
-                Console.WriteLine("Enter goal target: ");
+                Console.WriteLine("Enter the target: ");
                 int target = int.Parse(Console.ReadLine());
                 Console.WriteLine("Enter goal bonus: ");
                 int bonus = int.Parse(Console.ReadLine());
@@ -107,7 +107,7 @@ public class GoalManager
     public void RecordEvent()
     {
         Console.Write("Enter goal name: ");
-        var name = Console.ReadLine();
+        var name = Console.ReadLine(); 
 
         var goal = _goals.Find(g => g.GetStringRepresentation().StartsWith(name));
         if (goal != null)
