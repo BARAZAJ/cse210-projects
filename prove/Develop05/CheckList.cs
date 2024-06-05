@@ -33,4 +33,9 @@ public class ChecklistGoal : Goal
     {
         return $"{_shortName} - {_description}: {_points} points (Progress: {_amountCompleted}/{_target})";
     }
+
+    public override string GetCheckboxStatus()
+    {
+        return IsComplete() ? "[X]" : "[ ]";
+    }
 }

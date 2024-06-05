@@ -27,5 +27,9 @@ public class SimpleGoal : Goal
     {
         return $"{_shortName} - {_description}: {_points} points";
     }
-}
 
+    public override string GetCheckboxStatus()
+    {
+        return _isComplete ? "[X]" : "[ ]";
+    }
+}
