@@ -23,7 +23,7 @@ namespace OnlineOrderingSystem
             Console.WriteLine(order1.GetShippingLabel());
             Console.WriteLine($"Total Cost: ${order1.GetTotalCost():0.00}");
 
-            // Creating second order
+           
             Address address2 = new Address("22 Jump St", "Jinja", "JN", "Uganda");
             Customer customer2 = new Customer("Otema Isaac", address2);
             Product product3 = new Product("Soccer ball", "SC33", 20.5, 5);

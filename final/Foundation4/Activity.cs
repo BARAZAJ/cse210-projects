@@ -1,6 +1,6 @@
 using System;
 
-namespace YourProject.Activities
+namespace MyActivity.Activities
 {
     public abstract class Activity
     {

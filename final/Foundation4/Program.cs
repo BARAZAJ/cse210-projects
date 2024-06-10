@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using YourProject.Activities; // Ensure this matches your actual project namespace
+using MyActivity.Activities;
 
-namespace YourProject
+namespace MyActivity
 {
     public class Program
     {
@@ -10,9 +10,9 @@ namespace YourProject
         {
             List<Activity> activities = new List<Activity>
             {
-                new Running(new DateTime(2022, 11, 3), 30, 4.8),
-                new Cycling(new DateTime(2022, 11, 3), 30, 20),
-                new Swimming(new DateTime(2022, 11, 3), 30, 40)
+                new Running(new DateTime(2002, 09, 1), 24, 6),
+                new Cycling(new DateTime(2024, 07, 2), 26, 7.2),
+                new Swimming(new DateTime(2024, 12, 3), 25, 54)
             };
 
             foreach (var activity in activities)

@@ -4,13 +4,13 @@ public class Program
 {
     public static void Main()
     {
-        Address address1 = new Address("123 Main St", "Anytown", "CA", "12345");
-        Address address2 = new Address("456 Elm St", "Othertown", "TX", "67890");
-        Address address3 = new Address("789 Oak St", "Sometown", "FL", "10112");
+        Address address1 = new Address("123 Jinja St", "Jinja", "Ug", "12345");
+        Address address2 = new Address("234 Main St", "Kampala", "Kn", "67890");
+        Address address3 = new Address("342 Iganga St", "Mbarara", "RW", "10112");
 
-        Lecture lecture = new Lecture("Tech Talk", "A talk on the latest in technology", "2024-07-10", "10:00 AM", address1, "John Doe", 100);
-        Reception reception = new Reception("Company Gala", "Annual company celebration", "2024-07-15", "7:00 PM", address2, "rsvp@company.com");
-        OutdoorGathering outdoorGathering = new OutdoorGathering("Summer Festival", "A fun day in the sun", "2024-08-05", "12:00 PM", address3, "Sunny");
+        Lecture lecture = new Lecture("Biology Talk", "A talk on the latest in the field of Biology", "2024-04-02", "10:00 AM", address1, "BARAZA JOHN", 230);
+        Reception reception = new Reception("Company Party", "Serious dancing party", "2023-02-02", "7:00 PM", address2, "rsvp@company.com");
+        OutdoorGathering outdoorGathering = new OutdoorGathering("Beach party", "Just chilling in the sand", "2022-09-01", "02:00 PM", address3, "Buddy");
 
         Event[] events = { lecture, reception, outdoorGathering };
 

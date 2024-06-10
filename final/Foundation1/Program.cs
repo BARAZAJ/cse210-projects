@@ -39,7 +39,7 @@ public class Program
             {
                 Console.WriteLine($"- {comment.CommenterName}: {comment.Text}");
             }
-            Console.WriteLine(); // New line for better readability
+            Console.WriteLine(); 
         }
     }
 }
