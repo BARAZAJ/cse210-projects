@@ -6,8 +6,8 @@ namespace OnlineOrderingSystem
     {
         static void Main(string[] args)
         {
-            // Creating first order
-            Address address1 = new Address("432 Elim St", "Hollywood", "CA", "USA");
+            
+            Address address1 = new Address("22 jump St", "Jinja", "JN", "USA");
             Customer customer1 = new Customer("Baraza John", address1);
             Product product1 = new Product("Smartphones", "W123", 40.4, 3);
             Product product2 = new Product("Hard disks", "G456", 60.3, 5);
